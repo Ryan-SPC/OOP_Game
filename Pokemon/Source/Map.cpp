@@ -7,14 +7,14 @@
 
 namespace game_framework {
 	Map::Map(){
-		isMovingDown = false;
-		isMovingLeft = false;
-		isMovingRight = false;
-		isMovingUp = false;
+		isPlayerDown = false;
+		isPlayerLeft = false;
+		isPlayerRight = false;
+		isPlayerUp = false;
 	}
 
 	void Map::SetMapVector() {	
-		////map為 row X col 的二維矩陣////
+		////map為 row * col 的二維矩陣////
 		row = mapPic.Height() / PIX;			//row同時為Y邊緣值
 		col = mapPic.Width() / PIX;			//col同時為X邊緣值
 		////初始化矩陣 全部填0////
@@ -22,16 +22,18 @@ namespace game_framework {
 		ini_row.assign(col, 0);
 		map.assign(row, ini_row);
 		////初始定義玩家位置///
-		pX = (320 - X) / 40;
-		pY = (200 - Y) / 40;
+		pRow = (320 - X) / PIX;
+		pCol = (200 - Y) / PIX;
 	}
 
+	//////////////////testing//////////////////////////////
 	void Map::SetObject(int pic, int row, int col) {
 		int x = col * PIX;
 		int y = row * PIX;
 		block.LoadBitMap(pic, x, y);
 		map[row][col] = 1;
 	}
+	//////////////////testing//////////////////////////////
 
 	void Map::LoadBitMap(int pic, int x, int y) {
 		mapPic.LoadBitmap(pic);				//載入圖檔
@@ -47,67 +49,66 @@ namespace game_framework {
 		block.OnShow();
 	}
 
-	void Map::SetMovingDown(bool flag) {
-		isMovingDown = flag;
-		if (!isMovingDown) {
+	void Map::SetPlayerDown(bool flag) {
+		isPlayerDown = flag;
+		if (!isPlayerDown) {
 			while (Y % PIX != 0) {
-				Y -= 10;
-				pY += 0.25;
+				Y -= STEP;
+				pCol += (double)STEP / PIX;
 			}
 		}			
 	}
 
-	void Map::SetMovingLeft(bool flag) {
-		isMovingLeft = flag;
-		if (!isMovingLeft) {
+	void Map::SetPlayerLeft(bool flag) {
+		isPlayerLeft = flag;
+		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
-				X += 10;
-				pX -= 0.25;
+				X += STEP;
+				pRow -= (double)STEP / PIX;
 			}
 		}
 	}
 
-	void Map::SetMovingRight(bool flag) {
-		isMovingRight = flag;
-		if (!isMovingLeft) {
+	void Map::SetPlayerRight(bool flag) {
+		isPlayerRight = flag;
+		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
-				X -= 10;
-				pX += 0.25;
+				X -= STEP;
+				pRow += (double)STEP / PIX;
 			}
 		}
 	}
 
-	void Map::SetMovingUp(bool flag) {
-		isMovingUp = flag;
-		if (!isMovingUp) {
+	void Map::SetPlayerUp(bool flag) {
+		isPlayerUp = flag;
+		if (!isPlayerUp) {
 			while (Y % PIX != 0) {
-				Y += 10;
-				pY -= 0.25;
+				Y += STEP;
+				pCol -= (double)STEP / PIX;
 			}
 		}
 	}
 
 	void Map::OnMove(){
-		if (isMovingDown && pY < row - 1) {
-			Y -= 10;
-			pY += 0.25;
-			block.MoveDown();
+		if (isPlayerDown && pCol < row - 1) {
+			Y -= STEP;
+			pCol += (double)STEP/PIX;
+			block.PlayerDown();
 		}			
-		if (isMovingLeft && pX > 0) {
-			X += 10;
-			pX -= 0.25;
-			block.MoveLeft();
+		if (isPlayerLeft && pRow > 0) {
+			X += STEP;
+			pRow -= (double)STEP / PIX;
+			block.PlayerLeft();
 		}			
-		if (isMovingRight && pX < col - 1) {
-			X -= 10;
-			pX += 0.25;
-			block.MoveRight();
+		if (isPlayerRight && pRow < col - 1) {
+			X -= STEP;
+			pRow += (double)STEP / PIX;
+			block.PlayerRight();
 		}
-		if (isMovingUp && pY > 0) {
-			Y += 10;
-			pY -= 0.25;
-			block.MoveUp();
-		}
-			
+		if (isPlayerUp && pCol > 0) {
+			Y += STEP;
+			pCol -= (double)STEP / PIX;
+			block.PlayerUp();
+		}			
 	}
 }

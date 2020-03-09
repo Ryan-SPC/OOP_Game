@@ -330,7 +330,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	//////////////// 左鍵 //////////////////
 	if (nChar == KEY_LEFT) {
 		if (player.Direction == LEFT)
-			map.SetMovingLeft(true);
+			map.SetPlayerLeft(true);
 		else
 			player.Direction = LEFT;
 	}
@@ -338,7 +338,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	//////////////// 右鍵 //////////////////
 	if (nChar == KEY_RIGHT) {
 		if (player.Direction == RIGHT)
-			map.SetMovingRight(true);
+			map.SetPlayerRight(true);
 		else
 			player.Direction = RIGHT;
 	}		
@@ -346,7 +346,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	//////////////// 上鍵 //////////////////
 	if (nChar == KEY_UP) {
 		if (player.Direction == UP)
-			map.SetMovingUp(true);
+			map.SetPlayerUp(true);
 		else
 			player.Direction = UP;
 	}
@@ -354,7 +354,7 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	//////////////// 下鍵 //////////////////
 	if (nChar == KEY_DOWN) {
 		if (player.Direction == DOWN)
-			map.SetMovingDown(true);
+			map.SetPlayerDown(true);
 		else
 			player.Direction = DOWN;
 	}
@@ -368,13 +368,13 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT)
-		map.SetMovingLeft(false);
+		map.SetPlayerLeft(false);
 	if (nChar == KEY_RIGHT)
-		map.SetMovingRight(false);
+		map.SetPlayerRight(false);
 	if (nChar == KEY_UP)
-		map.SetMovingUp(false);
+		map.SetPlayerUp(false);
 	if (nChar == KEY_DOWN)
-		map.SetMovingDown(false);
+		map.SetPlayerDown(false);
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作

@@ -20,19 +20,19 @@ namespace game_framework {
 		blockPic.ShowBitmap();
 	}
 
-	void Block::MoveDown() {
+	void Block::PlayerDown() {
 		Y -= 40;
 	}
 
-	void Block::MoveUp() {
+	void Block::PlayerUp() {
 		Y += 40;
 	}
 
-	void Block::MoveLeft() {
+	void Block::PlayerLeft() {
 		X += 40;
 	}
 
-	void Block::MoveRight() {
+	void Block::PlayerRight() {
 		X -= 40;
 	}
 
