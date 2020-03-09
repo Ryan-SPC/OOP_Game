@@ -1,4 +1,5 @@
 #include "block.h"
+#define PIX 40									//地圖一格為 PIX * PIX
 namespace game_framework {
 	class Map
 	{
@@ -15,7 +16,7 @@ namespace game_framework {
 	private:
 		CMovingBitmap mapPic;
 		int X, Y;
-		int pX, pY;
+		double pX, pY;
 		vector<vector<int>> map;
 		Block block;
 		int row, col;
