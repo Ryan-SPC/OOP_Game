@@ -311,9 +311,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 	//
 	player.LoadBitMap();								//載入player
-	map.LoadBitMap(IDB_MAP,0,0);									//載入地圖
-	//map.SetEdge(player.X, player.Y, player.GetHeight(), player.GetWidth());
-	
+	map.LoadBitMap(IDB_MAP,0,0);						//載入地圖	
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)

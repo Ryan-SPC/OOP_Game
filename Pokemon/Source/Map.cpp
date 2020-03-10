@@ -32,6 +32,7 @@ namespace game_framework {
 		int y = row * PIX;
 		block.LoadBitMap(pic, x, y);
 		map[row][col] = 1;
+		v.push_back(&block);
 	}
 	//////////////////testing//////////////////////////////
 
@@ -54,6 +55,7 @@ namespace game_framework {
 		if (!isPlayerDown) {
 			while (Y % PIX != 0) {
 				Y -= STEP;
+				block.PlayerDown();
 				pCol += (double)STEP / PIX;
 			}
 		}			
@@ -64,6 +66,7 @@ namespace game_framework {
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X += STEP;
+				block.PlayerLeft();
 				pRow -= (double)STEP / PIX;
 			}
 		}
@@ -74,6 +77,7 @@ namespace game_framework {
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X -= STEP;
+				block.PlayerRight();
 				pRow += (double)STEP / PIX;
 			}
 		}
@@ -84,6 +88,7 @@ namespace game_framework {
 		if (!isPlayerUp) {
 			while (Y % PIX != 0) {
 				Y += STEP;
+				block.PlayerUp();
 				pCol -= (double)STEP / PIX;
 			}
 		}

@@ -138,6 +138,9 @@
     <ClCompile Include="Source\block.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MapArray.cpp">
+      <Filter>MyGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\audio.h">
@@ -182,10 +185,13 @@
     <ClInclude Include="Source\player.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GameObject.h">
+    <ClInclude Include="Source\block.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\block.h">
+    <ClInclude Include="Source\MapObject.h">
+      <Filter>MyGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MapArray.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>

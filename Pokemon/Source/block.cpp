@@ -4,12 +4,15 @@
 #include <ddraw.h>
 #include "gamelib.h"
 #include "block.h"
+
+constexpr int STEP = 10;							//移動時每幀移動格數
+
 namespace game_framework {
 	Block::Block() {
-
+		
 	}
 
-	void Block::LoadBitMap(int pic, int x, int y) {
+	/*void Block::LoadBitMap(int pic, int x, int y) {
 		blockPic.LoadBitmap(pic);
 		X = x;
 		Y = y;
@@ -21,20 +24,20 @@ namespace game_framework {
 	}
 
 	void Block::PlayerDown() {
-		Y -= 40;
+		Y -= STEP;
 	}
 
 	void Block::PlayerUp() {
-		Y += 40;
+		Y += STEP;
 	}
 
 	void Block::PlayerLeft() {
-		X += 40;
+		X += STEP;
 	}
 
 	void Block::PlayerRight() {
-		X -= 40;
-	}
+		X -= STEP;
+	}*/
 
 	void Block::Interact() {
 

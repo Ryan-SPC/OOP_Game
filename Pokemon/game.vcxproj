@@ -283,6 +283,7 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='UnitTest|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="Source\Map.cpp" />
+    <ClCompile Include="Source\MapArray.cpp" />
     <ClCompile Include="Source\player.cpp" />
     <ClCompile Include="Source\StdAfx.cpp">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -313,7 +314,8 @@
     <ClInclude Include="Source\CEraser.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\gameDoc.h" />
-    <ClInclude Include="Source\GameObject.h" />
+    <ClInclude Include="Source\MapArray.h" />
+    <ClInclude Include="Source\MapObject.h" />
     <ClInclude Include="Source\gameView.h" />
     <ClInclude Include="Source\MainFrm.h" />
     <ClInclude Include="Source\Map.h" />
