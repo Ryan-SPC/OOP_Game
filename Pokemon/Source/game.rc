@@ -106,17 +106,17 @@ IDB_LOADING             BITMAP                  "..\\res\\loading.bmp"
 
 IDB_TESTMAP2            BITMAP                  "..\\RES\\map\\testMap2.bmp"
 
-IDB_PLAYER              BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha.bmp"
+IDB_PLAYER              BITMAP                  "..\\RES\\charater\\testCha.bmp"
 
 IDB_MAP                 BITMAP                  "..\\RES\\map\\map2.bmp"
 
 IDB_BLOCK               BITMAP                  "..\\RES\\building\\block.bmp"
 
-IDB_PLAYER_BACK         BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha_back.bmp"
+IDB_PLAYER_BACK         BITMAP                  "..\\RES\\charater\\testCha_back.bmp"
 
-IDB_PLAYER_LEFT         BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha_left.bmp"
+IDB_PLAYER_LEFT         BITMAP                  "..\\RES\\charater\\testCha_left.bmp"
 
-IDB_PLAYER_RIGHT        BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha_right.bmp"
+IDB_PLAYER_RIGHT        BITMAP                  "..\\RES\\charater\\testCha_right.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

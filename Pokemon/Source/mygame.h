@@ -43,6 +43,7 @@
 #include "CBouncingBall.h"
 #include "Map.h"
 #include "player.h"
+//#include "MapItem.h"
 
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
@@ -105,7 +106,7 @@ namespace game_framework {
 		CBouncingBall   bball;		// 反覆彈跳的球
 		Map				map;		// 地圖
 		Player			player;		// player
-
+		//MapItem			poke_ball;	//pokeBall(?)
 		
 	};
 

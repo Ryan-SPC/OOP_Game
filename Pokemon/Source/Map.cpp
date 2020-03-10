@@ -81,7 +81,7 @@ namespace game_framework {
 		X = x;
 		Y = y;
 		SetMapVector();
-		SetObject(IDB_BLOCK,0,0);
+		SetObject(IDB_BLOCK,0,0);			//´ú¸ÕBlock
 	}
 
 	void Map::OnShow() {
