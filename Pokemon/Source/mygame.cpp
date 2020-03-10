@@ -312,6 +312,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 	player.LoadBitMap();								//載入player
 	map.LoadBitMap(IDB_MAP,0,0);						//載入地圖	
+	CMovingBitmap a;
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)

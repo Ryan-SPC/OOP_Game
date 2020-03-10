@@ -1,14 +1,9 @@
 #include "block.h"
 namespace game_framework{
-	class MapArray{
+	class MapArray : public vector<vector<MapObject>>{
 	public:
 		MapArray();
 		void SetSize(int, int);
-		template <class mObj> mObj GetObject(int, int);
-		int GetInt(int, int);
-		int GetRows();
-		int GetCols();
-		template <class mObj> void Add(mObj, int, int);
 
 	private:
 		int _row;

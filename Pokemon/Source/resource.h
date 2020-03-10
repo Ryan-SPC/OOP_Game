@@ -38,7 +38,6 @@
 #define IDB_BITMAP4                     165
 #define IDB_PLAYER_BACK                 165
 #define IDB_TESTMAP2                    167
-#define IDB_EVE                         168
 #define IDB_PLAYER                      170
 #define IDB_MAP                         171
 #define IDB_BLOCK                       172

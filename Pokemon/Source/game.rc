@@ -104,15 +104,13 @@ IDB_HELP                BITMAP                  "..\\res\\help.bmp"
 
 IDB_LOADING             BITMAP                  "..\\res\\loading.bmp"
 
-IDB_TESTMAP2            BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\map\\testMap2.bmp"
-
-IDB_EVE                 BITMAP                  "D:\\¨H¬f§¡\\Pictures\\Saved Pictures\\fire_eve.bmp"
+IDB_TESTMAP2            BITMAP                  "..\\RES\\map\\testMap2.bmp"
 
 IDB_PLAYER              BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha.bmp"
 
-IDB_MAP                 BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\map\\map2.bmp"
+IDB_MAP                 BITMAP                  "..\\RES\\map\\map2.bmp"
 
-IDB_BLOCK               BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\building\\block.bmp"
+IDB_BLOCK               BITMAP                  "..\\RES\\building\\block.bmp"
 
 IDB_PLAYER_BACK         BITMAP                  "D:\\Class\\oop_game\\Pokemon\\Pokemon\\RES\\charater\\testCha_back.bmp"
 
