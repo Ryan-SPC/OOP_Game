@@ -60,11 +60,11 @@ namespace game_framework {
 	}
 
 	//////////////////testing//////////////////////////////
-	void Map::SetObject(int pic, int row, int col) {
-		int x = col * PIX;
-		int y = row * PIX;
-		block.LoadBitMap(pic, x, y);
-		MA[row][col] = &block;
+	void Map::SetObject(MapObject* obj, int row, int col) {
+		//int x = col * PIX;
+		//int y = row * PIX;
+		//block.LoadBitMap(pic, x, y);
+		MA[row][col] = obj;
 		MA.SetInt(1, row, col);
 	}
 	//////////////////testing//////////////////////////////
@@ -74,7 +74,7 @@ namespace game_framework {
 		X = x;
 		Y = y;
 		SetMapVector();
-		SetObject(IDB_BLOCK,0,0);			// ´ú¸ÕBlock
+		//SetObject(IDB_BLOCK,0,0);			// ´ú¸ÕBlock
 	}
 
 	void Map::OnShow() {

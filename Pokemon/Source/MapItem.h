@@ -1,3 +1,6 @@
+#ifndef MAP_ITEM_H
+#define MAP_ITEM_H
+
 #include "MapObject.h"
 
 namespace game_framework {
@@ -9,3 +12,5 @@ namespace game_framework {
 	private:
 	};
 }
+
+#endif // !MAP_ITEM_H

@@ -43,6 +43,8 @@
 #include "CBouncingBall.h"
 #include "Map.h"
 #include "player.h"
+#include "block.h"
+
 //#include "MapItem.h"
 
 namespace game_framework {
@@ -107,6 +109,7 @@ namespace game_framework {
 		Map				map;		// ¦a¹Ï
 		Player			player;		// player
 		//MapItem			poke_ball;	//pokeBall(?)
+		//Block			block;
 		
 	};
 

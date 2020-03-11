@@ -1,4 +1,7 @@
-#include "block.h"
+#ifndef MAP_ARRAY_H
+#define MAP_ARRAY_H
+#include "MapObject.h"
+
 namespace game_framework{
 	class MapArray : public vector<vector<MapObject*>>{
 	public:
@@ -19,3 +22,4 @@ namespace game_framework{
 		vector<vector<int>> _int_vector;
   };
 }
+#endif // !MAP_ARRAY_H

@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 #define CENTER_X 320						//設定中心點XY值
 #define CENTER_Y 200
 #define LEFT 0
@@ -25,3 +28,4 @@ namespace game_framework {
 		CMovingBitmap playerRight;
 	};
 }
+#endif // !PLAYER_H

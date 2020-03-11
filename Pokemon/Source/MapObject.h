@@ -1,3 +1,5 @@
+#ifndef MAP_OBJECT_H
+#define MAP_OBJECT_H
 
 namespace game_framework {
 	constexpr int STEP = 10;							//移動時每幀移動格數
@@ -45,3 +47,4 @@ namespace game_framework {
 		CMovingBitmap _pic;
 	};
 }
+#endif // !MAP_OBJECT_H
