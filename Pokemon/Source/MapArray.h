@@ -1,12 +1,16 @@
 #include "block.h"
 namespace game_framework{
-	class MapArray : public vector<vector<MapObject>>{
+	class MapArray : public vector<vector<MapObject*>>{
 	public:
 		MapArray();
 		void SetSize(int, int);
 		int GetInt(int, int);
 		void SetInt(int, int, int);
 		void OnShow();
+		void PlayerDown();
+		void PlayerLeft();
+		void PlayerUp();
+		void PlayerRight();
 
 	private:
 		int _row;

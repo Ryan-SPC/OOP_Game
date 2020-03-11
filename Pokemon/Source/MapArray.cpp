@@ -21,18 +21,57 @@ namespace game_framework{
 	void MapArray::SetSize(int row, int col) {
 		_row = row;
 		_col = col;
-		vector<int> unitRow;
-		unitRow.assign(col, 0);
-		_int_vector.assign(row, unitRow);
+		vector<int> unitIntRow;
+		unitIntRow.assign(col, 0);
+		_int_vector.assign(row, unitIntRow);
+		vector<MapObject*> unitObjRow;
+		unitObjRow.assign(col, nullptr);
+		this->assign(row, unitObjRow);
 	}
 
 	void MapArray::OnShow() {
 		for (int i = 0; i < _row; i++) {
 			for (int j = 0; j < _col; j++) {
-				this->at(i).at(j).OnShow();
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->OnShow();
 			}
 		}
 	}
 
+	void MapArray::PlayerDown() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->PlayerDown();
+			}
+		}
+	}
+
+	void MapArray::PlayerLeft() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->PlayerLeft();
+			}
+		}
+	}
+
+	void MapArray::PlayerUp() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->PlayerUp();
+			}
+		}
+	}
+
+	void MapArray::PlayerRight() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->PlayerRight();
+			}
+		}
+	}
 	
 }

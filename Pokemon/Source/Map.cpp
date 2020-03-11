@@ -14,56 +14,49 @@ namespace game_framework {
 	}
 
 	bool Map::IsUpBlock() {
-		int pRow = (int)ceil(pX);
-		int pCol = (int)ceil(pY);
-		if (pCol == 0)
-			return true;
-		else
-			return map[pRow][pCol - 1] == 1;
-	}
-
-	bool Map::IsDownBlock() {
-		int pRow = (int)ceil(pX);
-		int pCol = (int)ceil(pY);
-		if (pCol == col - 1)
-			return true;
-		else
-			return map[pRow][pCol + 1] == 1;
-	}
-
-	bool Map::IsLeftBlock() {
-		int pRow = (int)ceil(pX);
-		int pCol = (int)ceil(pY);
+		int pRow = (int)ceil(pY);
+		int pCol = (int)ceil(pX);
 		if (pRow == 0)
 			return true;
 		else
-			return map[pRow - 1][pCol] == 1;
+			return MA.GetInt(pRow - 1, pCol) == 1;
 	}
 
-	bool Map::IsRightBlock() {
-		int pRow = (int)ceil(pX);
-		int pCol = (int)ceil(pY);
+	bool Map::IsDownBlock() {
+		int pRow = (int)floor(pY);
+		int pCol = (int)floor(pX);
 		if (pRow == row - 1)
 			return true;
 		else
-			return map[pRow + 1][pCol] == 1;
+			return MA.GetInt(pRow + 1, pCol) == 1;
+	}
+
+	bool Map::IsLeftBlock() {
+		int pRow = (int)ceil(pY);
+		int pCol = (int)ceil(pX);
+		if (pCol == 0)
+			return true;
+		else
+			return MA.GetInt(pRow, pCol - 1) == 1;
+	}
+
+	bool Map::IsRightBlock() {
+		int pRow = (int)floor(pY);
+		int pCol = (int)floor(pX);
+		if (pCol == col - 1)
+			return true;
+		else
+			return MA.GetInt(pRow, pCol + 1) == 1;
 	}
 
 	void Map::SetMapVector() {	
 		////map為 row * col 的二維矩陣////
 		row = mapPic.Height() / PIX;			//row同時為Y邊緣值
 		col = mapPic.Width() / PIX;			//col同時為X邊緣值
-		////初始化矩陣 全部填0////
-		vector<int> ini_row;
-		ini_row.assign(col, 0);
-		map.assign(row, ini_row);
 		////初始定義玩家位置///
 		pX = (320 - X) / PIX;
 		pY = (200 - Y) / PIX;
-
-		vector<MapObject*> irow;
-		irow.assign(col, nullptr);
-		v.assign(row, irow);
+		MA.SetSize(row, col);
 	}
 
 	//////////////////testing//////////////////////////////
@@ -71,29 +64,23 @@ namespace game_framework {
 		int x = col * PIX;
 		int y = row * PIX;
 		block.LoadBitMap(pic, x, y);
-		map[row][col] = 1;	
-		v[row][col] = &block;
+		MA[row][col] = &block;
+		MA.SetInt(1, row, col);
 	}
 	//////////////////testing//////////////////////////////
 
 	void Map::LoadBitMap(int pic, int x, int y) {
-		mapPic.LoadBitmap(pic);				//載入圖檔
+		mapPic.LoadBitmap(pic);				// 載入圖檔
 		X = x;
 		Y = y;
 		SetMapVector();
-		SetObject(IDB_BLOCK,0,0);			//測試Block
+		SetObject(IDB_BLOCK,0,0);			// 測試Block
 	}
 
 	void Map::OnShow() {
 		mapPic.SetTopLeft(X, Y);
-		mapPic.ShowBitmap();
-
-		/// Show all MapObject
-		for (int i = 0; i < row; i++) {
-			for (int j = 0; j < col; j++)
-				if (v[i][j] != nullptr)
-					v[i][j]->OnShow();
-		}
+		mapPic.ShowBitmap();		
+		MA.OnShow();						// Show all MapObject
 	}
 
 	void Map::SetPlayerDown(bool flag) {
@@ -101,14 +88,8 @@ namespace game_framework {
 		if (!isPlayerDown) {
 			while (Y % PIX != 0) {
 				Y -= STEP;				
-				pY += (double)STEP / PIX;
-
-				/// down all MapObject
-				for (int i = 0; i < row; i++) {
-					for (int j = 0; j < col; j++)
-						if (v[i][j] != nullptr)
-							v[i][j]->PlayerDown();
-				}
+				pY += (double)STEP / PIX;				
+				MA.PlayerDown();			// down all MapObject
 			}
 		}			
 	}
@@ -118,14 +99,8 @@ namespace game_framework {
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X += STEP;
-				pX -= (double)STEP / PIX;
-
-				/// left all MapObject
-				for (int i = 0; i < row; i++) {
-					for (int j = 0; j < col; j++)
-						if (v[i][j] != nullptr)
-							v[i][j]->PlayerLeft();
-				}
+				pX -= (double)STEP / PIX;				
+				MA.PlayerLeft();			// left all MapObject
 			}
 		}
 	}
@@ -135,14 +110,8 @@ namespace game_framework {
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X -= STEP;
-				pX += (double)STEP / PIX;
-
-				/// right all MapObject
-				for (int i = 0; i < row; i++) {
-					for (int j = 0; j < col; j++)
-						if (v[i][j] != nullptr)
-							v[i][j]->PlayerRight();
-				}
+				pX += (double)STEP / PIX;				
+				MA.PlayerRight();			// right all MapObject
 			}
 		}
 	}
@@ -152,62 +121,32 @@ namespace game_framework {
 		if (!isPlayerUp) {
 			while (Y % PIX != 0) {
 				Y += STEP;
-				pY -= (double)STEP / PIX;
-
-				/// up all MapObject
-				for (int i = 0; i < row; i++) {
-					for (int j = 0; j < col; j++)
-						if (v[i][j] != nullptr)
-							v[i][j]->PlayerUp();
-				}
+				pY -= (double)STEP / PIX;				
+				MA.PlayerUp();				// up all MapObject
 			}
 		}
 	}
 
 	void Map::OnMove(){
-		if (isPlayerDown && pY < row - 1 && !IsDownBlock()) {
+		if (isPlayerDown && !IsDownBlock()) {
 			Y -= STEP;
 			pY += (double)STEP/PIX;
-			
-			/// down all MapObject
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < col; j++)
-					if (v[i][j] != nullptr)
-						v[i][j]->PlayerDown();
-			}
+			MA.PlayerDown();			// down all MapObject
 		}			
-		if (isPlayerLeft && pX > 0 && !IsLeftBlock()) {
+		if (isPlayerLeft && !IsLeftBlock()) {
 			X += STEP;
 			pX -= (double)STEP / PIX;
-			
-			/// left all MapObject
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < col; j++)
-					if (v[i][j] != nullptr)
-						v[i][j]->PlayerLeft();
-			}
+			MA.PlayerLeft();			// left all MapObject
 		}			
-		if (isPlayerRight && pX < col - 1 && !IsRightBlock()) {
+		if (isPlayerRight && !IsRightBlock()) {
 			X -= STEP;
 			pX += (double)STEP / PIX;
-			
-			/// right all MapObject
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < col; j++)
-					if (v[i][j] != nullptr)
-						v[i][j]->PlayerRight();
-			}
+			MA.PlayerRight();			// right all MapObject
 		}
-		if (isPlayerUp && pY > 0 && !IsUpBlock()) {
+		if (isPlayerUp && !IsUpBlock()) {
 			Y += STEP;
 			pY -= (double)STEP / PIX;
-			
-			/// up all MapObject
-			for (int i = 0; i < row; i++) {
-				for (int j = 0; j < col; j++)
-					if (v[i][j] != nullptr)
-						v[i][j]->PlayerUp();
-			}
+			MA.PlayerUp();				// up all MapObject
 		}			
 	}
 }
