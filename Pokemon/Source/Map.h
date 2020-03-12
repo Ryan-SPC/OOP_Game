@@ -9,6 +9,7 @@ namespace game_framework {
 	{
 	public:
 		Map();
+		~Map();
 		void LoadBitMap(int, int, int);
 		void OnShow();
 		void OnMove();

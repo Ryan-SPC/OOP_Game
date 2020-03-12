@@ -13,6 +13,10 @@ namespace game_framework {
 		isPlayerUp = false;
 	}
 
+	Map::~Map() {
+		
+	}
+
 	bool Map::IsUpBlock() {
 		int pRow = (int)ceil(pY);
 		int pCol = (int)ceil(pX);

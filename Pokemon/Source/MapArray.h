@@ -6,6 +6,7 @@ namespace game_framework{
 	class MapArray : public vector<vector<MapObject*>>{
 	public:
 		MapArray();
+		~MapArray();
 		void SetSize(int, int);
 		int GetInt(int, int);
 		void SetInt(int, int, int);

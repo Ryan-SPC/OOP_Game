@@ -10,6 +10,15 @@ namespace game_framework{
 		_col = 0;
 	}
 
+	MapArray::~MapArray() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					delete this->at(i).at(j);
+			}
+		}
+	}
+
 	int MapArray::GetInt(int row, int col) {
 		return _int_vector[row][col];
 	}

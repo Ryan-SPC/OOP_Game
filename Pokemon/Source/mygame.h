@@ -109,8 +109,6 @@ namespace game_framework {
 		Map				map;		// ¦a¹Ï
 		Player			player;		// player
 		//MapItem			poke_ball;	//pokeBall(?)
-		Block*			block;
-		
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

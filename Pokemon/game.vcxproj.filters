@@ -14,6 +14,9 @@
     <Filter Include="MyGame">
       <UniqueIdentifier>{0c798913-b7d2-4e26-8241-0f83266cd626}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MyGame\Map">
+      <UniqueIdentifier>{2082aaf9-3a9c-4623-9a1b-e4935489782e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\ball.bmp">
@@ -129,20 +132,23 @@
     <ClCompile Include="Source\CBouncingBall.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Map.cpp">
-      <Filter>MyGame</Filter>
-    </ClCompile>
     <ClCompile Include="Source\player.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Source\block.cpp">
-      <Filter>MyGame</Filter>
+    <ClCompile Include="Source\Map.cpp">
+      <Filter>MyGame\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\MapArray.cpp">
-      <Filter>MyGame</Filter>
+      <Filter>MyGame\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\MapItem.cpp">
-      <Filter>MyGame</Filter>
+      <Filter>MyGame\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\block.cpp">
+      <Filter>MyGame\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MapFactory.cpp">
+      <Filter>MyGame\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -182,23 +188,26 @@
     <ClInclude Include="Source\CBouncingBall.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Map.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
     <ClInclude Include="Source\player.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\block.h">
-      <Filter>MyGame</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\MapObject.h">
-      <Filter>MyGame</Filter>
+    <ClInclude Include="Source\Map.h">
+      <Filter>MyGame\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\MapArray.h">
-      <Filter>MyGame</Filter>
+      <Filter>MyGame\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\MapItem.h">
-      <Filter>MyGame</Filter>
+      <Filter>MyGame\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MapObject.h">
+      <Filter>MyGame\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\block.h">
+      <Filter>MyGame\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MapFactory.h">
+      <Filter>MyGame\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

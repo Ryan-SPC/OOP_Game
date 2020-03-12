@@ -284,6 +284,7 @@
     </ClCompile>
     <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\MapArray.cpp" />
+    <ClCompile Include="Source\MapFactory.cpp" />
     <ClCompile Include="Source\MapItem.cpp" />
     <ClCompile Include="Source\player.cpp" />
     <ClCompile Include="Source\StdAfx.cpp">
@@ -316,6 +317,7 @@
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\gameDoc.h" />
     <ClInclude Include="Source\MapArray.h" />
+    <ClInclude Include="Source\MapFactory.h" />
     <ClInclude Include="Source\MapItem.h" />
     <ClInclude Include="Source\MapObject.h" />
     <ClInclude Include="Source\gameView.h" />
