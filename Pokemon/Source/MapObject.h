@@ -2,7 +2,8 @@
 #define MAP_OBJECT_H
 
 namespace game_framework {
-	constexpr int STEP = 10;							//移動時每幀移動格數
+	constexpr int STEP = 10;							//地圖一格大小為 PIX * PIX
+	constexpr int PIX = 40;								//移動時每幀移動格數
 	class  MapObject {
 	public:
 		virtual void Interact() = 0;
@@ -17,8 +18,8 @@ namespace game_framework {
 		}
 
 		void SetPosition(int row, int col) {
-			X = col * STEP;
-			Y = row * STEP;
+			X = col * PIX;
+			Y = row * PIX;
 		}
 
 		void PlayerDown() {

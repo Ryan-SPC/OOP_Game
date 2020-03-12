@@ -17,7 +17,7 @@ namespace game_framework {
 		void SetPlayerLeft(bool flag);				// 設定是否player正在往左移動
 		void SetPlayerRight(bool flag);				// 設定是否player正在往右移動
 		void SetPlayerUp(bool flag);				// 設定是否player正在往上移動
-		void SetObject(MapObject* , int, int);              // 在地圖放入物件
+		void SetObject(MapObject* , int, int);      // 在地圖放入物件
 	private:
 		CMovingBitmap mapPic;
 		int X, Y;
