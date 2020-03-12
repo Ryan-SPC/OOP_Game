@@ -8,6 +8,10 @@ namespace game_framework {
 	class Map
 	{
 	public:
+		//////
+		void LoadBitMap(int, int);
+		void SetPic(int, int, int);
+		//////
 		Map();
 		~Map();
 		void LoadBitMap(int, int, int);
@@ -19,6 +23,11 @@ namespace game_framework {
 		void SetPlayerUp(bool flag);				// 設定是否player正在往上移動
 		void SetObject(MapObject* , int, int);      // 在地圖放入物件
 	private:
+		/////
+		int _picID;
+		int _height, _width;
+		void SetMapVector2();
+		/////
 		CMovingBitmap mapPic;
 		int X, Y;
 		double pX, pY;								// player所在陣列位置

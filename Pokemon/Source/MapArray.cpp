@@ -5,6 +5,16 @@
 #include "gamelib.h"
 #include "MapArray.h"
 namespace game_framework{
+	///
+	void MapArray::LoadBitMap() {
+		for (int i = 0; i < _row; i++) {
+			for (int j = 0; j < _col; j++) {
+				if (this->at(i).at(j) != nullptr)
+					this->at(i).at(j)->LoadBitMap();
+			}
+		}
+	}
+	///
 	MapArray::MapArray() {
 		_row = 0;
 		_col = 0;

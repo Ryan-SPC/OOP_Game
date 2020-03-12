@@ -44,6 +44,9 @@
 #include "Map.h"
 #include "player.h"
 #include "block.h"
+////
+#include "MapFactory.h"
+////
 
 //#include "MapItem.h"
 
@@ -106,9 +109,12 @@ namespace game_framework {
 		CEraser			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bball;		// 反覆彈跳的球
-		Map				map;		// 地圖
+		//Map				map;		// 地圖
 		Player			player;		// player
 		//MapItem			poke_ball;	//pokeBall(?)
+		////
+		MapFactory		factory;
+		////
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

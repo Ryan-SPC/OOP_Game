@@ -12,11 +12,12 @@ namespace game_framework {
 	public:
 		MapFactory();
 		~MapFactory();
-		Map GetMap(MapName);
+		Map* GetMap(MapName);
+		void SetMap_Test();
 
 	private:
-		Map* _maps;
-		void SetMap_Test();
+		Map** _maps;
+		
 		int _number_of_maps;
 	};
 }

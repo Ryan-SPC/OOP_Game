@@ -6,11 +6,44 @@
 #include "Map.h"
 
 namespace game_framework {
+	/////	
+
+	void Map::SetPic(int picID, int height, int width) {
+		_picID = picID;
+		_height = height;
+		_width = width;
+		SetMapVector2();
+	}
+
+	void Map::SetMapVector2() {
+		////map為 row * col 的二維矩陣////
+		row = _height / PIX;			//row同時為Y邊緣值
+		col = _width / PIX;			//col同時為X邊緣值
+
+		MA.SetSize(row, col);
+	}
+
+	void Map::LoadBitMap(int x, int y) {
+		mapPic.LoadBitmap(_picID);				// 載入圖檔
+		X = x;
+		Y = y;
+		////初始定義玩家位置///
+		pX = (320 - X) / PIX;
+		pY = (200 - Y) / PIX;
+		
+		MA.LoadBitMap();
+	}
+	/////
 	Map::Map(){
 		isPlayerDown = false;
 		isPlayerLeft = false;
 		isPlayerRight = false;
 		isPlayerUp = false;
+		///
+		_picID = 0;
+		_width = 0;
+		_height = 0;
+		///
 	}
 
 	Map::~Map() {

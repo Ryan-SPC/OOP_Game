@@ -5,6 +5,9 @@
 namespace game_framework{
 	class MapArray : public vector<vector<MapObject*>>{
 	public:
+		///
+		void LoadBitMap();
+		///
 		MapArray();
 		~MapArray();
 		void SetSize(int, int);
