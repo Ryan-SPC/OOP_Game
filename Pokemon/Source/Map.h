@@ -21,9 +21,7 @@ namespace game_framework {
 		CMovingBitmap mapPic;
 		int X, Y;
 		double pX, pY;								// player所在陣列位置
-		MapArray MA;
-		
-		//Block block;								// 測試用
+		MapArray MA;								//map用二維陣列
 		int row, col;								// 二維陣列大小為 row * col
 		bool isPlayerDown;							// 是否player正在往下移動
 		bool isPlayerLeft;							// 是否player正在往左移動
@@ -31,10 +29,10 @@ namespace game_framework {
 		bool isPlayerUp;							// 是否player正在往上移動
 
 		void SetMapVector();						//設定二維陣列
-		bool IsDownBlock();
-		bool IsLeftBlock();
-		bool IsRightBlock();
-		bool IsUpBlock();
+		bool IsDownBlock();							//使否無法向下移動
+		bool IsLeftBlock();							//使否無法向左移動
+		bool IsRightBlock();						//使否無法向右移動
+		bool IsUpBlock();							//使否無法向上移動
 	};
 }
 

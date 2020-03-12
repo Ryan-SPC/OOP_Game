@@ -59,22 +59,17 @@ namespace game_framework {
 		MA.SetSize(row, col);
 	}
 
-	//////////////////testing//////////////////////////////
 	void Map::SetObject(MapObject* obj, int row, int col) {
-		//int x = col * PIX;
-		//int y = row * PIX;
-		//block.LoadBitMap(pic, x, y);
+		obj->SetPosition(row, col);
 		MA[row][col] = obj;
 		MA.SetInt(1, row, col);
 	}
-	//////////////////testing//////////////////////////////
 
 	void Map::LoadBitMap(int pic, int x, int y) {
 		mapPic.LoadBitmap(pic);				// ¸ü¤J¹ÏÀÉ
 		X = x;
 		Y = y;
 		SetMapVector();
-		//SetObject(IDB_BLOCK,0,0);			// ´ú¸ÕBlock
 	}
 
 	void Map::OnShow() {

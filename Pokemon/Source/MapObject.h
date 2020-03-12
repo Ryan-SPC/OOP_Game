@@ -7,16 +7,20 @@ namespace game_framework {
 	public:
 		virtual void Interact() = 0;
 
-		virtual void LoadBitMap(int pic, int x, int y) {
-			_pic.LoadBitmap(pic);
-			X = x;
-			Y = y;
+		virtual void LoadBitMap() {
+			_pic.LoadBitmap(_picID);			
 		}
 
 		virtual void OnShow() {
 			_pic.SetTopLeft(X, Y);
 			_pic.ShowBitmap();
 		}
+
+		void SetPosition(int row, int col) {
+			X = col * STEP;
+			Y = row * STEP;
+		}
+
 		void PlayerDown() {
 			Y -= STEP;
 		}
@@ -41,7 +45,8 @@ namespace game_framework {
 			return _pic.Width();
 		}
 
-	private:
+	protected:
+		int _picID;					//¹Ï¤ùID
 		int X, Y;
 		int _height, _width;
 		CMovingBitmap _pic;

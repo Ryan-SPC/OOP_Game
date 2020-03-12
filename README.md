@@ -33,8 +33,18 @@
 
 2020/3/12 am 01:15 SPC
 
-將非範例的.h檔加入 	#ifndef		以後新增.h檔都要記得加
-			#define
-			#endif
+將非範例的.h檔加入 	#ifndef	#define	#endif 以後新增.h檔都要記得加	
 
 為編寫factorye改動Map，目前要測試MapObject請到myGame加入
+
+
+2020/3/12 am 09:25 SPC
+
+變更Map.SetObject和Block建構元, 新增MapObject函式(LoadBitMap, SetPosition)
+
+如果要編寫MapObject類型Class請參考Block, 並以myGame.cpp裡block的插入方法測試
+
+注意map.SetObject要在map.LoadBitMap下方
+
+下一步->編寫MapFactory
+
