@@ -8,6 +8,7 @@ namespace game_framework{
 	///
 	void MapArray::LoadBitMap() {
 		for (int i = 0; i < _row; i++) {
+			int m = this->at(i).size();
 			for (int j = 0; j < _col; j++) {
 				if (this->at(i).at(j) != nullptr)
 					this->at(i).at(j)->LoadBitMap();
@@ -29,20 +30,24 @@ namespace game_framework{
 		}
 	}
 
-	int MapArray::GetInt(int row, int col) {
-		return _int_vector[row][col];
+	int MapArray::GetBPoint(int row, int col) {
+		return _bPoint_vector[row][col];
 	}
 
-	void MapArray::SetInt(int s,int row, int col) {
-		_int_vector[row][col] = s;
+	void MapArray::SetBPoint(int s,int row, int col) {
+		_bPoint_vector[row][col] = s;
 	}
 
-	void MapArray::SetSize(int row, int col) {
+	bool MapArray::IsBlock(int row, int col) {
+		return _bPoint_vector[row][col] == 1;
+	}
+
+	void MapArray::Build(int row, int col) {
 		_row = row;
 		_col = col;
 		vector<int> unitIntRow;
 		unitIntRow.assign(col, 0);
-		_int_vector.assign(row, unitIntRow);
+		_bPoint_vector.assign(row, unitIntRow);
 		vector<MapObject*> unitObjRow;
 		unitObjRow.assign(col, nullptr);
 		this->assign(row, unitObjRow);

@@ -219,7 +219,7 @@ void CGameStateRun::OnBeginState()
 	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
 	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
 	hits_left.SetTopLeft(HITS_LEFT_X,HITS_LEFT_Y);		// 指定剩下撞擊數的座標
-	CAudio::Instance()->Play(AUDIO_LAKE, true);			// 撥放 WAVE
+	CAudio::Instance()->Play(AUDIO_LAKE, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_DING, false);		// 撥放 WAVE
 	CAudio::Instance()->Play(AUDIO_NTUT, true);			// 撥放 MIDI
 }
@@ -268,12 +268,9 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	bball.OnMove();
 
-	// 移動map
-	//map.OnMove();
-	factory.GetMap(Test)->OnMove();
-	// 改變player方向
-	player.OnMove();
-	
+	////////////////////////////非範例////////////////////////////////////	
+	factory.GetMap(Test)->OnMove();			// 移動map	
+	player.OnMove();						// 改變player方向	
 }
 
 void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
@@ -310,15 +307,10 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 	// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 	//
-	//Block* block = new Block(IDB_BLOCK);
-	//block->LoadBitMap();
-	player.LoadBitMap();								//載入player
-	////
-	factory.GetMap(Test)->LoadBitMap(0, 0);
 	
-	////
-	//map.LoadBitMap(IDB_MAP,0,0);						//載入地圖
-	//map.SetObject(block, 1, 1);
+	////////////////////////////非範例////////////////////////////////////
+	player.LoadBitMap();								//載入player	
+	factory.GetMap(Test)->LoadBitMap(0, 0);				//載入地圖		
 }
 
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -328,44 +320,36 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 
-	//
-	// 一般模式移動
-	//
-
 	//////////////// 左鍵 //////////////////
 	if (nChar == KEY_LEFT) {
 		if (player.Direction == LEFT)
 			factory.GetMap(Test)->SetPlayerLeft(true);
-			//map.SetPlayerLeft(true);
 		else
-			player.Direction = LEFT;
+			player.Direction = LEFT;						// 如果player不是面向左方的話會先轉向
 	}
 
 	//////////////// 右鍵 //////////////////
 	if (nChar == KEY_RIGHT) {
 		if (player.Direction == RIGHT)
 			factory.GetMap(Test)->SetPlayerRight(true);
-			//map.SetPlayerRight(true);
 		else
-			player.Direction = RIGHT;
+			player.Direction = RIGHT;						// 如果player不是面向右方的話會先轉向
 	}		
 
 	//////////////// 上鍵 //////////////////
 	if (nChar == KEY_UP) {
 		if (player.Direction == UP)
 			factory.GetMap(Test)->SetPlayerUp(true);
-			//map.SetPlayerUp(true);
 		else
-			player.Direction = UP;
+			player.Direction = UP;							// 如果player不是面向上方的話會先轉向
 	}
 
 	//////////////// 下鍵 //////////////////
 	if (nChar == KEY_DOWN) {
 		if (player.Direction == DOWN)
 			factory.GetMap(Test)->SetPlayerDown(true);
-			//map.SetPlayerDown(true);
 		else
-			player.Direction = DOWN;
+			player.Direction = DOWN;						// 如果player不是面向下方的話會先轉向
 	}
 		
 }
@@ -378,26 +362,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
 	if (nChar == KEY_LEFT)
 		factory.GetMap(Test)->SetPlayerLeft(false);
-		//map.SetPlayerLeft(false);
 	if (nChar == KEY_RIGHT)
 		factory.GetMap(Test)->SetPlayerRight(false);
-		//map.SetPlayerRight(false);
 	if (nChar == KEY_UP)
 		factory.GetMap(Test)->SetPlayerUp(false);
-		//map.SetPlayerUp(false);
 	if (nChar == KEY_DOWN)
 		factory.GetMap(Test)->SetPlayerDown(false);
-		//map.SetPlayerDown(false);
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(true);
+	//eraser.SetMovingLeft(true);
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(false);
+	//eraser.SetMovingLeft(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -407,12 +387,12 @@ void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingRight(true);
+	//eraser.SetMovingRight(true);
 }
 
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingRight(false);
+	//eraser.SetMovingRight(false);
 }
 
 void CGameStateRun::OnShow()
@@ -438,12 +418,9 @@ void CGameStateRun::OnShow()
 	corner.SetTopLeft(0,0);
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	corner.ShowBitmap();
-
-	//map.OnShow();						//貼上地圖
-	////
-	factory.GetMap(Test)->OnShow();
-	////
+	corner.ShowBitmap();				
+	////////////////////////////非範例////////////////////////////////////
+	factory.GetMap(Test)->OnShow();		//貼上地圖
 	player.OnShow();					//貼上player
 }
 }

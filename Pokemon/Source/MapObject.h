@@ -49,7 +49,7 @@ namespace game_framework {
 	protected:
 		int _picID;					//¹Ï¤ùID
 		int X, Y;
-		int _height, _width;
+		//int _height, _width;
 		CMovingBitmap _pic;
 	};
 }

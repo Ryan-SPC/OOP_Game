@@ -8,41 +8,34 @@ namespace game_framework {
 	class Map
 	{
 	public:
-		//////
-		void LoadBitMap(int, int);
-		void SetPic(int, int, int);
-		//////
 		Map();
 		~Map();
-		void LoadBitMap(int, int, int);
+		void LoadBitMap(int, int);					// 載入圖片(根据想初始想顯示位置給予int x, y)
 		void OnShow();
 		void OnMove();
+		void SetPic(int, int, int);					// 設定圖片ID,圖片size (size請給正確)
 		void SetPlayerDown(bool flag);				// 設定是否player正在往下移動
 		void SetPlayerLeft(bool flag);				// 設定是否player正在往左移動
 		void SetPlayerRight(bool flag);				// 設定是否player正在往右移動
 		void SetPlayerUp(bool flag);				// 設定是否player正在往上移動
 		void SetObject(MapObject* , int, int);      // 在地圖放入物件
 	private:
-		/////
-		int _picID;
-		int _height, _width;
-		void SetMapVector2();
-		/////
+		int _picID;									// 圖片ID
+		int _height, _width;						// 圖片長寬
 		CMovingBitmap mapPic;
-		int X, Y;
+		int X, Y;									// 圖片位置
 		double pX, pY;								// player所在陣列位置
-		MapArray MA;								//map用二維陣列
-		int row, col;								// 二維陣列大小為 row * col
+		MapArray MA;								// map用二維陣列
+		int _row, _col;								// 二維陣列大小為 row * col
 		bool isPlayerDown;							// 是否player正在往下移動
 		bool isPlayerLeft;							// 是否player正在往左移動
 		bool isPlayerRight;							// 是否player正在往右移動
 		bool isPlayerUp;							// 是否player正在往上移動
 
-		void SetMapVector();						//設定二維陣列
-		bool IsDownBlock();							//使否無法向下移動
-		bool IsLeftBlock();							//使否無法向左移動
-		bool IsRightBlock();						//使否無法向右移動
-		bool IsUpBlock();							//使否無法向上移動
+		bool IsDownBlock();							// 使否無法向下移動
+		bool IsLeftBlock();							// 使否無法向左移動
+		bool IsRightBlock();						// 使否無法向右移動
+		bool IsUpBlock();							// 使否無法向上移動
 	};
 }
 

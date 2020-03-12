@@ -4,26 +4,23 @@
 
 namespace game_framework{
 	class MapArray : public vector<vector<MapObject*>>{
-	public:
-		///
-		void LoadBitMap();
-		///
+	public:	
 		MapArray();
 		~MapArray();
-		void SetSize(int, int);
-		int GetInt(int, int);
-		void SetInt(int, int, int);
+		void LoadBitMap();
+		void Build(int, int);					// 建置矩陣
+		int GetBPoint(int, int);				// 回傳阻擋係數
+		bool IsBlock(int, int);					// 回傳是否被阻擋
+		void SetBPoint(int, int, int);			// 設定阻擋係數
 		void OnShow();
-		void PlayerDown();
-		void PlayerLeft();
-		void PlayerUp();
-		void PlayerRight();
+		void PlayerDown();						// Down all MapObject
+		void PlayerLeft();						// Left all MapObject
+		void PlayerUp();						// Right all MapObject
+		void PlayerRight();						// Up all MapObject
 
 	private:
-		int _row;
-		int _col;
-		double pr, pc;
-		vector<vector<int>> _int_vector;
+		int _row, _col;
+		vector<vector<int>> _bPoint_vector;		// 存放阻擋係數的二為矩陣
   };
 }
 #endif // !MAP_ARRAY_H

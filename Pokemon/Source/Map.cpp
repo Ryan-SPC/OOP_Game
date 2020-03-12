@@ -6,21 +6,23 @@
 #include "Map.h"
 
 namespace game_framework {
-	/////	
+	Map::Map() {
+		isPlayerDown = isPlayerLeft = isPlayerRight = isPlayerUp = false;;
+		_picID = _width = _height = _row = _col = 0;
+	}
+
+	Map::~Map() {
+		// 會自動call MapArray解構元
+	}
 
 	void Map::SetPic(int picID, int height, int width) {
 		_picID = picID;
 		_height = height;
 		_width = width;
-		SetMapVector2();
-	}
-
-	void Map::SetMapVector2() {
-		////map為 row * col 的二維矩陣////
-		row = _height / PIX;			//row同時為Y邊緣值
-		col = _width / PIX;			//col同時為X邊緣值
-
-		MA.SetSize(row, col);
+		/// 有了地圖size才能建構矩陣 ///
+		_row = _height / PIX;			
+		_col = _width / PIX;			
+		MA.Build(_row, _col);					// 建構矩陣
 	}
 
 	void Map::LoadBitMap(int x, int y) {
@@ -33,80 +35,52 @@ namespace game_framework {
 		
 		MA.LoadBitMap();
 	}
-	/////
-	Map::Map(){
-		isPlayerDown = false;
-		isPlayerLeft = false;
-		isPlayerRight = false;
-		isPlayerUp = false;
-		///
-		_picID = 0;
-		_width = 0;
-		_height = 0;
-		///
-	}
-
-	Map::~Map() {
-		
-	}
-
+	
 	bool Map::IsUpBlock() {
+		// pY, pX 可能為非整數 故取其Ceiling(Floor) *向上,左取Ceiling *向下,右取Floor
 		int pRow = (int)ceil(pY);
 		int pCol = (int)ceil(pX);
-		if (pRow == 0)
+		if (pRow == 0)								// 到達邊界則直接回傳true
 			return true;
 		else
-			return MA.GetInt(pRow - 1, pCol) == 1;
+			return MA.IsBlock(pRow - 1, pCol);
 	}
 
 	bool Map::IsDownBlock() {
+		// pY, pX 可能為非整數 故取其Ceiling(Floor) *向上,左取Ceiling *向下,右取Floor
 		int pRow = (int)floor(pY);
 		int pCol = (int)floor(pX);
-		if (pRow == row - 1)
+		if (pRow == _row - 1)						// 到達邊界則直接回傳true
 			return true;
 		else
-			return MA.GetInt(pRow + 1, pCol) == 1;
+			return MA.IsBlock(pRow + 1, pCol);
 	}
 
 	bool Map::IsLeftBlock() {
+		// pY, pX 可能為非整數 故取其Ceiling(Floor) *向上,左取Ceiling *向下,右取Floor
 		int pRow = (int)ceil(pY);
 		int pCol = (int)ceil(pX);
-		if (pCol == 0)
+		if (pCol == 0)								// 到達邊界則直接回傳true
 			return true;
 		else
-			return MA.GetInt(pRow, pCol - 1) == 1;
+			return MA.IsBlock(pRow, pCol - 1);
 	}
 
 	bool Map::IsRightBlock() {
+		// pY, pX 可能為非整數 故取其Ceiling(Floor) *向上,左取Ceiling *向下,右取Floor
 		int pRow = (int)floor(pY);
 		int pCol = (int)floor(pX);
-		if (pCol == col - 1)
+		if (pCol == _col - 1)						// 到達邊界則直接回傳true
 			return true;
 		else
-			return MA.GetInt(pRow, pCol + 1) == 1;
+			return MA.IsBlock(pRow, pCol + 1);
 	}
 
-	void Map::SetMapVector() {	
-		////map為 row * col 的二維矩陣////
-		row = mapPic.Height() / PIX;			//row同時為Y邊緣值
-		col = mapPic.Width() / PIX;			//col同時為X邊緣值
-		////初始定義玩家位置///
-		pX = (320 - X) / PIX;
-		pY = (200 - Y) / PIX;
-		MA.SetSize(row, col);
-	}
 
 	void Map::SetObject(MapObject* obj, int row, int col) {
 		obj->SetPosition(row, col);
 		MA[row][col] = obj;
-		MA.SetInt(1, row, col);
-	}
-
-	void Map::LoadBitMap(int pic, int x, int y) {
-		mapPic.LoadBitmap(pic);				// 載入圖檔
-		X = x;
-		Y = y;
-		SetMapVector();
+		MA.SetBPoint(1, row, col);
 	}
 
 	void Map::OnShow() {
@@ -117,6 +91,7 @@ namespace game_framework {
 
 	void Map::SetPlayerDown(bool flag) {
 		isPlayerDown = flag;
+		// 如果未移動完一格(PIX px) 則會繼續移動 (STEP/PIX px)
 		if (!isPlayerDown) {
 			while (Y % PIX != 0) {
 				Y -= STEP;				
@@ -128,6 +103,7 @@ namespace game_framework {
 
 	void Map::SetPlayerLeft(bool flag) {
 		isPlayerLeft = flag;
+		// 如果未移動完一格(PIX px) 則會繼續移動 (STEP/PIX px)
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X += STEP;
@@ -139,6 +115,7 @@ namespace game_framework {
 
 	void Map::SetPlayerRight(bool flag) {
 		isPlayerRight = flag;
+		// 如果未移動完一格(PIX px) 則會繼續移動 (STEP/PIX px)
 		if (!isPlayerLeft) {
 			while (X % PIX != 0) {
 				X -= STEP;
@@ -150,6 +127,7 @@ namespace game_framework {
 
 	void Map::SetPlayerUp(bool flag) {
 		isPlayerUp = flag;
+		// 如果未移動完一格(PIX px) 則會繼續移動 (STEP/PIX px)
 		if (!isPlayerUp) {
 			while (Y % PIX != 0) {
 				Y += STEP;

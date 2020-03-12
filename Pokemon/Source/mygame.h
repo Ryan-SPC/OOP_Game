@@ -109,12 +109,10 @@ namespace game_framework {
 		CEraser			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bball;		// 反覆彈跳的球
-		//Map				map;		// 地圖
 		Player			player;		// player
+		MapFactory		factory;	// 地圖工廠 負責call Map
 		//MapItem			poke_ball;	//pokeBall(?)
-		////
-		MapFactory		factory;
-		////
+		
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
