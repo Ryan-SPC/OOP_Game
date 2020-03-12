@@ -3,14 +3,21 @@
 
 #include "Map.h"
 namespace game_framework {
+	enum MapName
+	{
+		Test
+	};
+	
 	class MapFactory {
 	public:
-		MapFactory() {};
-		void SetMapOne() {};
-		Map M1() {};
+		MapFactory();
+		~MapFactory();
+		Map GetMap(MapName);
 
 	private:
-		Map* map1;
+		Map* _maps;
+		void SetMap_Test();
+		int _number_of_maps;
 	};
 }
 #endif // !MAP_FACTORY_H
